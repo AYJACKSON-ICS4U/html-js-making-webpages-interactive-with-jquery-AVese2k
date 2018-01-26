@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Project: Scene change</title>
+        <style>
+        #leafers {
+            position: absolute;
+            top: 210px;
+            left: 378px;
+        }
+        #description {
+            font-size: 30px;
+            color: green;
+            padding: 20px;
+        }    
+        </style>
+    </head>
+    <body>
+
+    <img src="https://www.kasandbox.org/programming-images/landscapes/beach-with-palm-trees.png" id="beach">
+
+    <img src="https://www.kasandbox.org/programming-images/avatars/leafers-seedling.png" id="leafers">
+    
+    <div id="description">Leafer is enjoying the beach</div>
+    <div id="results1"></div>
+    <div id="results2"></div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        $("#beach").on("click", function(event) {
+            var $img = $("<img>")
+                .attr("src", "https://www.kasandbox.org/programming-images/avatars/leafers-seedling.png")
+                .width(100)
+                .css("position", "absolute")
+                .css("top", (event.pageY - 75) + "px")
+                .css("left", (event.pageX - 40) + "px")
+                .appendTo("body");
+        });
+        var numClicks1 = 0;
+        $("#leafers").on("click", function() {
+            $("#results1").text("You clicked the leaf avatar " + numClicks1 + " times");
+            numClicks1++;
+        });
+        var numClicks2 = 0;
+        $("#description").on("click", function() {
+            $("#results2").text("You clicked the description " + numClicks2 + " times");
+            numClicks2++;
+        });
+    </script>
+    </body>
+</html>
